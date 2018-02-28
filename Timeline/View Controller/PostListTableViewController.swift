@@ -12,35 +12,34 @@ class PostListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.rowHeight = PostController.shared.imageHeight
+        tableView.estimatedRowHeight = PostController.shared.imageHeight
     }
 
     // MARK: - Table view data source
-
-    /*
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-    */
  
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return PostController.shared.posts.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
 
         let postResult = PostController.shared.posts[indexPath.row]
+        
+//        let cellImage: UIImageView = UIImageView(frame: CGRectMake(5, 5, 50, 50))
+//        cell.addSubview(cellImage)
         
         cell.post = postResult
 
         return cell
     }
-
+    
+    
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -65,6 +64,4 @@ class PostListTableViewController: UITableViewController {
             destinationViewController.post = post
         }
     }
-    
-
 }

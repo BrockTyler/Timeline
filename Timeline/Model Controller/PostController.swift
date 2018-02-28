@@ -16,6 +16,9 @@ class PostController {
     
     var posts: [Post] = []
     
+    let imageHeight: CGFloat = 375
+    let rowHeight: CGFloat = 450
+    
     func createPostWith(image: UIImage, caption: String) {
         
         guard let data = UIImagePNGRepresentation(image) else { return }
